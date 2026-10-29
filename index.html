@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-Portofolio Praktik Pembelajaran Mandiri | Muhammad Farhan Said</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+    --ink: #16324F;             /* navy */
+    --ink-soft: #28536B;
+    --ink-muted: #667085;
+    --cream: #F2FBF8;           /* cream */
+    --cream-dark: #DDEFEF;      /* silver */
+    --warm-white: #ffffff;      /* white */
+    --gold: #27AE9B;            /* gold */
+    --gold-light: #88DCCB;
+    --gold-pale: #DDF5C4;
+    --teal: #157A83;            /* fresh teal */
+    --teal-light: #2A9D8F;
+    --teal-pale: #E4F6F1;       /* light blue */
+    --red-accent: #FFB86B;
+    --dark-tosca: #157A6E;
+    --border: rgba(22, 50, 79, 0.18);
+    --shadow-soft: 0 4px 24px rgba(22, 50, 79, 0.09);
+    --shadow-card: 0 2px 12px rgba(22, 50, 79, 0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    transition: box-shadow 0.3s;
+  }
+
+  nav.scrolled { box-shadow: var(--shadow-soft); }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    line-height: 60px;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--teal); border-bottom: 2px solid var(--teal); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--ink-soft); border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  #beranda {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(22, 50, 79, 0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(39, 174, 155, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-decoration {
+    position: absolute;
+    top: 80px; right: 0;
+    width: 45%;
+    height: calc(100% - 80px);
+    background: var(--cream-dark);
+    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+
+  .hero-deco-pattern {
+    position: absolute;
+    top: 80px; right: 0;
+    width: 45%;
+    height: calc(100% - 80px);
+    z-index: 1;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--gold) 0px, var(--gold) 1px,
+      transparent 1px, transparent 12px
+    );
+    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .hero-content {
+    padding: 4rem 3rem 4rem 5rem;
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 0.9s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    margin: 1.25rem 0 2rem;
+    font-weight: 300;
+    max-width: 420px;
+    line-height: 1.8;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .tag {
+    background: var(--gold-pale);
+    color: var(--ink-soft);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--teal);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .hero-cta:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 4rem 4rem 2rem;
+    animation: fadeInRight 0.9s ease 0.2s both;
+  }
+
+  .profile-frame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .profile-photo-placeholder {
+    width: 280px;
+    height: 340px;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    box-shadow: 12px 12px 0 var(--gold-pale), 12px 12px 0 1px var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-photo-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  .profile-photo-placeholder svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .profile-photo-placeholder p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .profile-card-info {
+    position: static;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 0.9rem 1.1rem;
+    border-radius: 4px;
+    box-shadow: var(--shadow-card);
+    min-width: 180px;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .profile-card-info .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .profile-card-info .role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .stat-badge {
+    position: static;
+    background: var(--gold);
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 3px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    align-self: center;
+  }
+
+  .profile-photo-drive {
+    width: 280px;
+    height: 340px;
+    background: linear-gradient(135deg, var(--warm-white) 0%, #FFFFFF 100%);
+    border-radius: 4px;
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    box-shadow: 12px 12px 0 var(--gold-pale), 12px 12px 0 1px var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-photo-drive::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+    pointer-events: none;
+  }
+
+  .profile-photo-link {
+    flex: 1;
+    display: block;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+  }
+
+  .profile-photo-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(22, 50, 79, 0.12), rgba(39, 174, 155, 0.10)), var(--cream-dark);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+  }
+
+  .profile-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .profile-photo-caption {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+  }
+
+  .profile-photo-drive .media-link:hover .profile-photo-frame {
+    transform: translateY(-1px);
+  }
+
+  /* ===== NAV INDEX BAR ===== */
+  .nav-index {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1.2rem 5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .nav-index-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-right: 0.5rem;
+  }
+
+  .nav-index a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(242,251,248,0.6);
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    transition: 0.2s;
+    counter-increment: nav-counter;
+  }
+
+  .nav-index a::before {
+    content: attr(data-num) '. ';
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .nav-index a:hover { color: var(--cream); background: rgba(255,255,255,0.05); }
+
+  /* ===== SECTION BASE ===== */
+  section {
+    padding: 5rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    max-width: 100%;
+    padding: 5rem 0;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 650px;
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  /* ===== PROFIL ===== */
+  #profil { background: var(--warm-white); padding: 5rem 0; max-width: 100%; }
+
+  .profil-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .profil-sidebar {
+    position: sticky;
+    top: 80px;
+  }
+
+  .profil-detail-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .profil-detail-card h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .profil-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.35rem 0.1rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.85rem;
+    align-items: baseline;
+  }
+
+  .profil-item dt {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    padding-top: 0.1rem;
+    white-space: nowrap;
+    width: 80px;
+  }
+
+  .profil-item dd {
+    color: var(--ink-soft);
+    font-weight: 400;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-item svg { color: var(--teal); flex-shrink: 0; }
+
+  .profil-body p {
+    margin-bottom: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    font-size: 0.97rem;
+  }
+
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.5rem;
+    background: var(--gold-pale);
+    border-radius: 0 4px 4px 0;
+    margin: 2rem 0;
+  }
+
+  .quote-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-block cite {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+
+  .narasi-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .narasi-photo {
+    margin: 0;
+  }
+
+  .narasi-photo-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(135deg, rgba(22, 50, 79, 0.12), rgba(39, 174, 155, 0.10)),
+      var(--warm-white);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .narasi-photo-placeholder {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--ink-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .narasi-photo-placeholder svg {
+    display: block;
+    margin: 0 auto 0.75rem;
+    width: 34px;
+    height: 34px;
+    color: var(--teal);
+    opacity: 0.9;
+  }
+
+  .narasi-photo figcaption,
+  .media-caption-link {
+    margin-top: 0.65rem;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .media-caption-link {
+    display: block;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .media-caption-link:hover {
+    color: var(--teal);
+    transform: translateY(-1px);
+  }
+
+  /* ===== ARTEFAK TABS & TWO-TIER FILTER ===== */
+  #artefak { background: var(--cream); }
+
+  .cycle-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cycle-tab {
+    padding: 0.6rem 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .cycle-tab:hover { color: var(--teal); }
+  .cycle-tab.active {
+    color: white;
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+
+  .artefak-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 3rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .artefak-tabs::-webkit-scrollbar { display: none; }
+
+  .artefak-tab {
+    padding: 0.75rem 1.25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: 0.2s;
+  }
+  
+  .artefak-tab:hover { color: var(--dark-tosca); }
+  .artefak-tab.active {
+    color: white;
+    background: var(--dark-tosca);
+    border-color: var(--dark-tosca);
+  }
+
+  .artefak-panel { display: none; }
+  .artefak-panel.active { display: block; }
+
+  .artefak-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .artefak-card-header {
+    background: linear-gradient(135deg, var(--teal) 0%, #1D7890 100%);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .artefak-card-header .artefak-icon {
+    width: 42px; height: 42px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .artefak-card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .artefak-card-header p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+  }
+
+  .artefak-card-body {
+    padding: 2rem;
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Landasan teori mengisi seluruh lebar panel artefak. */
+  .analysis-grid.theory-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analysis-item {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--teal);
+  }
+
+  .analysis-item.b { border-left-color: var(--gold); }
+
+  .analysis-item h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .analysis-item p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .analysis-full {
+    grid-column: 1 / -1;
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  .analysis-full h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .analysis-full p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .placeholder-box {
+    border: 2px dashed var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+    margin-top: 1rem;
+  }
+
+  .placeholder-box p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== LAMPIRAN ===== */
+  #lampiran { background: var(--warm-white); }
+
+  .lampiran-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .lampiran-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .lampiran-card-header {
+    background: var(--ink);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lampiran-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .lampiran-card-header h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    color: white;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .lampiran-card-body {
+    padding: 1.5rem;
+  }
+
+  .lampiran-card-body p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .siklus-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+
+  .siklus-badge {
+    background: var(--teal-pale);
+    color: var(--teal);
+    border: 1px solid rgba(22,50,79,0.2);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+
+  /* ===== DOKUMENTASI PEMBELAJARAN ===== */
+  .documentation-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .documentation-photo {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cream);
+    box-shadow: var(--shadow-card);
+  }
+
+  .documentation-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    background: var(--cream-dark);
+  }
+
+  .documentation-photo figcaption {
+    padding: 0.8rem 0.9rem 0.95rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .documentation-note {
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+  }
+
+  .lampiran-cycle-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .lampiran-cycle-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .lampiran-cycle-header {
+    background: linear-gradient(135deg, var(--ink) 0%, #28536B 100%);
+    color: white;
+    padding: 1rem 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .lampiran-cycle-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .lampiran-cycle-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+
+  .lampiran-cycle-body {
+    padding: 1rem 1.1rem 1.15rem;
+  }
+
+  .lampiran-cycle-body p {
+    margin-bottom: 0.85rem;
+  }
+
+  .lampiran-cycle-body .placeholder-box {
+    margin-top: 0.9rem;
+  }
+
+
+  .media-source-hint {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+
+  .media-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.55rem;
+    border: 1px solid rgba(39, 174, 155, 0.25);
+    border-radius: 999px;
+    background: rgba(221,245,196,0.42);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .media-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .media-link:focus-visible {
+    outline: 2px solid var(--teal-light);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+
+  .narasi-gallery .narasi-photo-frame {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .narasi-gallery .media-link:hover .narasi-photo-frame {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26,22,18,0.1);
+  }
+
+  .documentation-photo img {
+    transition: transform 0.2s ease;
+  }
+
+  .documentation-photo .media-link:hover img {
+    transform: scale(1.01);
+  }
+
+  .pdf-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: var(--warm-white);
+  }
+
+  .pdf-block iframe {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: 0;
+    background: white;
+  }
+
+  .pdf-block-fallback {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    background:
+      radial-gradient(circle at top, rgba(22,50,79,0.08), transparent 45%),
+      linear-gradient(135deg, rgba(221,245,196,0.5), rgba(246,253,250,0.95));
+    color: var(--ink-soft);
+  }
+
+  .pdf-block-fallback svg {
+    width: 54px;
+    height: 54px;
+    color: var(--teal);
+    margin-bottom: 0.85rem;
+  }
+
+  .pdf-block-fallback h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+  }
+
+  .pdf-block-fallback p {
+    max-width: 340px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 0.85rem;
+  }
+
+  .pdf-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.85rem;
+  }
+
+  .pdf-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 4px;
+    background: var(--teal);
+    color: white;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .pdf-button:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+  }
+
+  .pdf-button.secondary {
+    background: transparent;
+    color: var(--teal);
+    border: 1px solid rgba(22,50,79,0.25);
+  }
+
+  .pdf-button.secondary:hover {
+    background: rgba(22,50,79,0.06);
+  }
+
+
+  /* ===== GALERI PPL MANDIRI ===== */
+  #galeri-pplt {
+    background: var(--cream);
+  }
+
+  .pplt-gallery-shell {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    padding: 1.25rem;
+  }
+
+  .pplt-main-view {
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(22, 50, 79, 0.08), rgba(39, 174, 155, 0.08));
+    border: 1px solid var(--border);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .pplt-main-view a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pplt-main-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .pplt-main-view:hover img {
+    transform: scale(1.01);
+  }
+
+  .pplt-main-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.9rem 0 1.1rem;
+    flex-wrap: wrap;
+  }
+
+  .pplt-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pplt-main-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .pplt-thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .pplt-thumb {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cream);
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .pplt-thumb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(26, 22, 18, 0.1);
+  }
+
+  .pplt-thumb.active {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 2px rgba(22,50,79,0.12), var(--shadow-card);
+  }
+
+  .pplt-thumb img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    background: var(--cream-dark);
+  }
+
+  .pplt-thumb span {
+    display: block;
+    padding: 0.55rem 0.55rem 0.65rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .pplt-gallery-note {
+    margin-top: 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+  }
+
+  .pplt-gallery-note strong {
+    color: var(--teal);
+    font-weight: 400;
+  }
+  /* ===== MODEL GURU ===== */
+  #model-guru { background: var(--cream); }
+
+  .model-guru-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .misi-box {
+    background: linear-gradient(135deg, var(--teal) 0%, #205D68 100%);
+    border-radius: 6px;
+    padding: 2.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .misi-box::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+  }
+
+  .misi-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .misi-box p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .kompetensi-list {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+
+  .kompetensi-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .kompetensi-list li:last-child { border-bottom: none; }
+
+  .k-icon {
+    width: 28px; height: 28px;
+    background: var(--teal-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .langkah-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .langkah-item {
+    padding: 1.25rem 1rem;
+    background: var(--warm-white);
+    border-right: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+  }
+
+  .langkah-item:last-child { border-right: none; }
+
+  .langkah-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold-pale);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    line-height: 1;
+  }
+
+  .langkah-item h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  .langkah-item p {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    position: relative;
+  }
+
+  
+
+/* ===== REFLEKSI ===== */
+  #refleksi { background: var(--ink); color: var(--cream); }
+
+  #refleksi .section-title { color: var(--cream); }
+  #refleksi .section-label { color: var(--gold); }
+  #refleksi .section-label::after { background: var(--gold); }
+  #refleksi .section-lead { color: rgba(242,251,248,0.7); }
+
+  .refleksi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .refleksi-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(39,174,155,0.2);
+    border-radius: 6px;
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+
+  .refleksi-card:hover { background: rgba(255,255,255,0.07); }
+
+  .refleksi-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(39,174,155,0.2);
+  }
+
+  .refleksi-card p {
+    font-size: 0.88rem;
+    color: rgba(242,251,248,0.75);
+    line-height: 1.8;
+  }
+
+  .refleksi-card ul {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+
+  .refleksi-card ul li {
+    font-size: 0.85rem;
+    color: rgba(242,251,248,0.75);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .refleksi-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ===== FILOSOFI ===== */
+  #filosofi { background: var(--warm-white); }
+
+  .filosofi-hero {
+    background: linear-gradient(135deg, var(--gold) 0%, #167C72 100%);
+    border-radius: 6px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .filosofi-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px,
+      transparent 1px, transparent 40px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px,
+      transparent 1px, transparent 40px
+    );
+  }
+
+  .filosofi-hero h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: white;
+    line-height: 1.5;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .filosofi-hero p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .filosofi-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pillar {
+    padding: 1.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pillar::before {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -0.5rem;
+    right: 0.75rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(39,174,155,0.08);
+    line-height: 1;
+  }
+
+  .pillar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    position: relative;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: rgba(242,251,248,0.5);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeInUp 0.6s ease both; }
+
+  /* ===== DIVIDER ===== */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .ornament-divider hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .ornament-divider span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+
+  /* ===== KEGIATAN NON-MENGAJAR ===== */
+  .nonmengajar-tabs {
+    display: none;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 3rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nonmengajar-tabs::-webkit-scrollbar { display: none; }
+  .nonmengajar-panel { display: none; }
+  .nonmengajar-panel.active { display: block; }
+  .nonmengajar-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .nonmengajar-photo-slot {
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--warm-white);
+    box-shadow: var(--shadow-card);
+  }
+  .nonmengajar-photo-placeholder {
+    min-height: 210px;
+    aspect-ratio: 4 / 3;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    text-align: center;
+    color: var(--ink-muted);
+    background: linear-gradient(135deg, rgba(255,184,107,0.28), rgba(221,245,196,0.35)), var(--cream-dark);
+  }
+  .nonmengajar-photo-link { display: block; width: 100%; }
+  .nonmengajar-photo-slot img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--cream-dark);
+  }
+  .nonmengajar-photo-slot img:hover { opacity: 0.97; }
+  .nonmengajar-photo-placeholder svg { width: 38px; height: 38px; color: var(--teal-light); }
+  .nonmengajar-photo-placeholder strong {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  .nonmengajar-photo-placeholder span { font-size: 0.8rem; line-height: 1.5; }
+  .nonmengajar-description {
+    padding: 1.1rem 1.25rem; border-left: 3px solid var(--gold);
+    border-radius: 0 5px 5px 0; background: var(--cream);
+  }
+  .nonmengajar-description h4 {
+    font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem;
+  }
+  .nonmengajar-description p { color: var(--ink-soft); font-size: 0.9rem; }
+  @media (max-width: 600px) {
+    .nonmengajar-photo-grid { grid-template-columns: 1fr; }
+    .nonmengajar-photo-placeholder { min-height: 180px; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    #beranda { grid-template-columns: 1fr; min-height: auto; padding-top: 80px; }
+    .hero-decoration, .hero-deco-pattern { display: none; }
+    .hero-content { padding: 3rem 2rem 2rem; }
+    .hero-visual { padding: 2rem; justify-content: flex-start; }
+    section { padding: 3rem 1.5rem; }
+    .section-inner, .profil-grid { padding: 0 1.5rem; }
+    .profil-grid { grid-template-columns: 1fr; }
+    .profil-sidebar { position: static; }
+    .analysis-grid { grid-template-columns: 1fr; }
+    .refleksi-grid { grid-template-columns: 1fr; }
+    .filosofi-pillars { grid-template-columns: 1fr; }
+    .lampiran-grid { grid-template-columns: 1fr; }
+    .model-guru-layout { grid-template-columns: 1fr; }
+    .langkah-grid { grid-template-columns: 1fr 1fr; }
+    nav .nav-links { display: none; }
+    nav .nav-links.open { 
+      display: flex; flex-direction: column;
+      position: absolute; top: 60px; left: 0; right: 0;
+      background: var(--cream);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem 0;
+    }
+    .nav-links a { line-height: 1; padding: 0.75rem 2rem; }
+    .hamburger { display: flex; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem; }
+    .nav-index { padding: 1rem 1.5rem; }
+    .section-full { padding: 3rem 0; }
+    .cycle-tabs { flex-wrap: wrap; }
+    .narasi-gallery { grid-template-columns: 1fr; }
+    .pplt-thumb-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .pplt-main-meta { align-items: flex-start; }
+  }
+
+  @media (max-width: 600px) {
+    .pplt-thumb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pplt-main-meta { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  }
+
+  @media (max-width: 420px) {
+    .pplt-thumb-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<nav id="navbar">
+<a class="nav-brand" href="#beranda">E-Portofolio Praktik Pembelajaran Mandiri</a>
+<ul class="nav-links" id="navLinks">
+<li><a data-section="beranda" href="#beranda">Beranda</a></li>
+<li><a data-section="profil" href="#profil">Profil</a></li>
+<li><a data-section="artefak" href="#artefak">Kegiatan</a></li>
+<li><a data-section="model-guru" href="#model-guru">Model Guru</a></li>
+<li><a data-section="refleksi" href="#refleksi">Refleksi</a></li>
+<li><a data-section="filosofi" href="#filosofi">Filosofi</a></li>
+</ul>
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</div>
+</nav>
+<section id="beranda" style="padding:0; max-width:100%;">
+<div class="hero-bg"></div>
+<div class="hero-decoration"></div>
+<div class="hero-deco-pattern"></div>
+<div class="hero-content">
+<div class="hero-eyebrow">E-Portofolio Praktik Pembelajaran Mandiri</div>
+<h1 class="hero-title">
+      Guru Bermakna:<br/>
+      Dari <em>Teori</em> ke <em>Praktik</em>
+</h1>
+<p class="hero-subtitle">Selamat datang di ruang dokumentasi perjalanan profesional saya sebagai calon guru. E-portofolio ini memuat proses belajar, praktik mengajar, materi pembelajaran, dan refleksi selama pelaksanaan PPL Mandiri dalam program Pendidikan Profesi Guru (PPG) Calon Guru.</p>
+<div class="hero-tags">
+<span class="tag">PPG Calon Guru</span>
+<span class="tag">PENDIDIKAN PROFESI GURU</span>
+<span class="tag">UNIVERSITAS HALU OLEO</span>
+<span class="tag">PPL Mandiri</span>
+<span class="tag">MATEMATIKA</span>
+<span class="tag">SMAN 4 KENDARI</span>
+</div>
+<a class="hero-cta" href="#profil">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      Lihat Portofolio
+    </a>
+</div>
+<div class="hero-visual">
+<div class="profile-frame">
+<div class="stat-badge">PPG Calon Guru</div>
+<div class="profile-photo-drive">
+<a aria-label="Buka foto profil di Google Drive" class="media-link profile-photo-link" href="https://drive.google.com/file/d/1iMHakqL9XhFmMKo8rJ51rYnGBfp94Z5K/view?usp=drivesdk" rel="noopener" target="_blank">
+<div class="profile-photo-frame">
+<img alt="Foto Profil Muhammad Farhan Said" src="https://drive.google.com/thumbnail?id=1iMHakqL9XhFmMKo8rJ51rYnGBfp94Z5K&amp;sz=w1200"/>
+</div>
+</a>
+<a class="media-caption-link profile-photo-caption" href="https://drive.google.com/file/d/1iMHakqL9XhFmMKo8rJ51rYnGBfp94Z5K/view?usp=drivesdk" rel="noopener" target="_blank">Foto Profil</a>
+</div>
+<div class="profile-card-info">
+<div class="name">Muhammad Farhan Said, S.Mat.</div>
+<div class="role">Mahasiswa · PENDIDIKAN PROFESI GURU</div>
+</div>
+</div>
+</div>
+</section>
+<div class="section-full" id="profil">
+<div class="profil-grid">
+<div class="profil-sidebar">
+<div class="section-label">Siapa Saya</div>
+<h2 class="section-title" style="font-size:1.8rem; margin-bottom:1.5rem;">Profil Mahasiswa</h2>
+<div class="profil-detail-card">
+<dl>
+<div class="profil-item">
+<dt>Nama</dt>
+<dd>Muhammad Farhan Said, S.Mat.</dd>
+</div>
+<div class="profil-item">
+<dt>Asal</dt>
+<dd>Kendari, Sulawesi Tenggara</dd>
+</div>
+<div class="profil-item">
+<dt>Prodi</dt>
+<dd>Pendidikan Profesi Guru</dd>
+</div>
+<div class="profil-item">
+<dt>Universitas</dt>
+<dd>Universitas Halu Oleo</dd>
+</div>
+<div class="profil-item">
+<dt>Mapel</dt>
+<dd>Matematika</dd>
+</div>
+<div class="profil-item">
+<dt>Guru Pamong</dt>
+<dd>Dra. Mikarna Haryani, M.Pd.</dd>
+</div>
+<div class="profil-item">
+<dt>DPL</dt>
+<dd>Dr. Hafiludin Samparadja, S.Pd., M.Pd.</dd>
+</div>
+<div class="profil-item">
+<dt>Lokasi PPL</dt>
+<dd>SMA Negeri 4 Kendari</dd>
+</div>
+</dl>
+</div>
+<div class="profil-detail-card">
+<h4>Kontak</h4>
+<div class="contact-item">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          muhfarhan292@gmail.com
+        </div>
+<div class="contact-item">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+          0853 4280 1342
+        </div>
+<div class="contact-item">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Kendari, Sulawesi Tenggara
+        </div>
+</div>
+</div>
+<div class="profil-body fade-in">
+<div class="section-label" style="margin-bottom:0.5rem;">Narasi Diri</div>
+<h2 class="section-title" style="margin-bottom:1rem;">Mengenal Diri dan Tujuan</h2>
+<div class="narasi-gallery">
+<figure class="narasi-photo">
+<a aria-label="Buka Google Maps: Daerah Asal" class="media-link" href="https://www.google.com/maps/search/?api=1&amp;query=Kendari,+Sulawesi+Tenggara" rel="noopener" target="_blank">
+<div class="narasi-photo-frame">
+<img alt="Daerah Asal" src="https://drive.google.com/thumbnail?id=1awCBl7VM_ui7c8VULJX7Tl8nNrhJYsmd&amp;sz=w1200" style="width:115%; height:115%; object-fit:fill; display:block; border-radius:4px;"/>
+</div>
+</a>
+<a class="media-caption-link" href="https://youtu.be/8pI6ZIFiNhY?si=x5UPQCPNlrxApdCx" rel="noopener" target="_blank">Kota Kendari</a>
+</figure>
+<figure class="narasi-photo">
+<a aria-label="Buka Google Maps: Lokasi LPTK" class="media-link" href="https://maps.app.goo.gl/cEwjoeNeScsWFn389" rel="noopener" target="_blank">
+<div class="narasi-photo-frame">
+<img alt="Lokasi LPTK" src="https://drive.google.com/thumbnail?id=1kSpJPg6Z7hfLZsHCYjmHRu8li1OXTHLb&amp;sz=w1200" style="width:115%; height:115%; object-fit:fill; display:block; border-radius:4px;"/>
+</div>
+</a>
+<a class="media-caption-link" href="https://youtu.be/xpkRvWk-iI0?si=116ETK5NLe8QvAi_" rel="noopener" target="_blank">Universitas Halu Oleo</a>
+</figure>
+<figure class="narasi-photo">
+<a aria-label="Buka Google Maps: Lokasi PPLT" class="media-link" href="https://maps.app.goo.gl/azWKB5WhBJdFPfSY9" rel="noopener" target="_blank">
+<div class="narasi-photo-frame">
+<img alt="Lokasi PPLT" src="https://drive.google.com/thumbnail?id=1tOdDO_odrV1_KPCb2e_quZXk3UatE9Uk&amp;sz=w1200" style="width:115%; height:115%; object-fit:fill; display:block; border-radius:4px;"/>
+</div>
+</a>
+<a class="media-caption-link" href="https://www.youtube.com/@SMANegeri4Kendari1975" rel="noopener" target="_blank">SMAN 4 Kendari</a>
+</figure>
+</div>
+<p>
+        Saya, Muhammad Farhan Said, berasal dari Kota Kendari, ibu kota Provinsi Sulawesi Tenggara, yang punya karakter khas sebagai kota pesisir di Teluk Kendari dan sejak lama dikenal sebagai jalur singgah perdagangan laut. Bagi saya, Kendari punya daya tarik yang hangat dan membanggakan. Lautnya dekat dengan kehidupan warga, suasana kotanya tumbuh dari budaya pesisir, dan identitas lokalnya terasa kuat lewat warisan seperti kain tenun khas Kendari yang bermotif indah serta kerajinan perak yang halus dan bernilai seni tinggi. Selain itu, Kendari juga menyimpan pesona wisata yang membuatnya istimewa, seperti Pantai Nambo yang terkenal dengan pasir putihnya, serta masjid bersejarah seperti Masjid Raya Al-Kautsar yang menjadi salah satu penanda penting perjalanan kota ini. Dari kota inilah saya tumbuh dengan rasa syukur, kedekatan pada budaya, dan semangat untuk terus belajar serta membawa nama baik daerah asal saya ke mana pun saya melangkah.      </p>
+<p>
+        Inspirasi saya untuk menjadi guru berawal dari pengalaman saat menjadi asisten dosen pada masa perkuliahan. Dari pengalaman tersebut, saya merasakan kebahagiaan tersendiri ketika mahasiswa dapat memahami materi yang saya jelaskan dan menunjukkan antusiasme dalam belajar. Saya juga menyadari bahwa banyak peserta didik sebenarnya memiliki potensi yang besar, tetapi sering kali mengalami kesulitan karena konsep yang dipelajari disampaikan dengan cara yang kurang mudah dipahami. Hal itulah yang mendorong saya untuk menjadi seorang guru matematika yang mampu menjembatani konsep-konsep yang abstrak menjadi lebih sederhana, dekat, dan bermakna bagi peserta didik. Ke depan, saya ingin menjadi guru profesional yang tidak hanya menguasai materi pembelajaran, tetapi juga mampu menuntun setiap peserta didik sesuai potensi dan karakteristiknya, membangun karakter yang baik, serta menjadi sosok yang terus belajar, reflektif, dan memberi teladan positif baik di dalam maupun di luar kelas.      </p>
+<p>
+        Melalui Program Pendidikan Profesi Guru (PPG) Calon Guru, saya berupaya mewujudkan cita-cita tersebut secara sistematis dan terstruktur. Bagi saya, PPG bukan sekadar ruang untuk memenuhi syarat administratif menjadi guru bersertifikat, tetapi juga menjadi proses penting dalam membentuk karakter, mempertajam kompetensi pedagogik, serta memperkuat identitas saya sebagai calon pendidik profesional. Setiap siklus pembelajaran yang saya jalani, setiap perangkat yang saya rancang, dan setiap pengalaman mengajar di kelas menjadi bagian dari perjalanan saya untuk terus belajar dan memperbaiki diri. Dari proses inilah saya semakin yakin bahwa menjadi guru bukan hanya tentang menyampaikan materi, melainkan tentang hadir dengan kesungguhan untuk menuntun peserta didik agar memahami pelajaran dengan lebih baik dan menemukan makna dalam setiap proses belajar.      </p>
+<p>
+        Dalam jangka panjang, saya ingin tumbuh menjadi pendidik yang tidak hanya menguasai materi, tetapi juga mampu merancang pengalaman belajar yang bermakna, mendorong peserta didik untuk berpikir kritis, kreatif, dan bertanggung jawab. Saya percaya bahwa setiap peserta didik membawa potensi yang unik, sebagaimana saya sendiri pernah merasakan bahwa pengalaman mengajar dapat menumbuhkan keyakinan dan semangat untuk terus berkembang sebagai calon guru. Karena itu, saya ingin menjadi guru yang hadir secara penuh, baik secara intelektual maupun emosional, bagi setiap murid yang saya dampingi. Nilai yang paling saya pegang teguh dalam menjalankan profesi ini adalah kejujuran intelektual, empati, dan pertumbuhan yang berkelanjutan, sebab saya meyakini bahwa guru yang baik adalah guru yang tidak pernah berhenti belajar. E-portofolio ini pun menjadi salah satu wujud nyata komitmen saya untuk terus bertumbuh, merefleksikan pengalaman, dan merencanakan langkah perbaikan yang lebih baik ke depannya.      </p>
+<div class="quote-block">
+<blockquote>
+          "Menjadi guru bagi saya adalah proses belajar tanpa henti untuk menuntun peserta didik memahami potensinya, mengembangkan karakternya, dan mempersiapkan dirinya menghadapi masa depan dengan percaya diri dan tanggung jawab."
+        </blockquote>
+<cite>— Refleksi Pribadi, Muhammad Farhan Said</cite>
+</div>
+</div>
+</div>
+</div>
+<section id="artefak">
+<div class="section-label">Dokumentasi Praktik</div>
+<h2 class="section-title">Kegiatan Mengajar dan Non-Mengajar</h2>
+<p class="section-lead">Bagian ini memuat dokumentasi perangkat pembelajaran, media, materi, hasil karya peserta didik, serta kegiatan non-mengajar selama PPL Mandiri di SMA Negeri 4 Kendari. Pilih kategori dan menu untuk melihat dokumentasi yang tersedia.</p>
+<div class="cycle-tabs"><button class="cycle-tab active" onclick="selectCycle('mengajar', this)" type="button">Kegiatan Mengajar</button><button class="cycle-tab" onclick="selectCycle('non-mengajar', this)" type="button">Kegiatan Non-Mengajar</button></div>
+<div class="artefak-tabs" style="display:flex;"><button class="artefak-tab active" onclick="selectType('rpp', this)" type="button">Modul Ajar</button><button class="artefak-tab" onclick="selectType('lkpd', this)" type="button">LKPD</button><button class="artefak-tab" onclick="selectType('media', this)" type="button">Media Pembelajaran</button><button class="artefak-tab" onclick="selectType('penilaian-ppl', this)" type="button">Materi Pembelajaran</button><button class="artefak-tab" onclick="selectType('penilaian-mandiri', this)" type="button">Penilaian PPL</button><button class="artefak-tab" onclick="selectType('karya', this)" type="button">Kerja Siswa</button><button class="artefak-tab" onclick="selectType('dokumentasi', this)" type="button">Dokumentasi Pembelajaran</button></div><div class="nonmengajar-tabs" id="nonMengajarTabs" style="display:none;"><button class="artefak-tab active" onclick="selectNonMengajar('rabu-sehat', this)" type="button">Rabu Sehat</button><button class="artefak-tab" onclick="selectNonMengajar('kamis-literasi', this)" type="button">Kamis Literasi</button><button class="artefak-tab" onclick="selectNonMengajar('jumat-imtaq', this)" type="button">Jum'at Imtaq</button><button class="artefak-tab" onclick="selectNonMengajar('rapat-guru', this)" type="button">Rapat Guru</button></div>
+<div class="artefak-panel active" id="panel-s1-rpp">
+<div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg>
+</div>
+<div>
+<h3>Modul Ajar</h3>
+<p>Siklus 1 · Matematika</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item">
+<h4>Konteks Artefak</h4>
+<p>Artefak ini berupa modul ajar Matematika Tingkat Lanjut kelas XII-N di SMA Negeri 4 Kendari yang membahas persamaan garis singgung lingkaran dengan gradien m. Modul dirancang untuk satu pertemuan dengan alokasi waktu 3 JP atau 135 menit, menggunakan pendekatan Pembelajaran Mendalam (Deep Learning), model Problem-Based Learning (PBL), strategi kooperatif, dan gamifikasi. Kegiatan pembelajaran memanfaatkan dadu, kartu soal, LKPD, papan skor, serta GeoGebra sebagai media pendukung. Materi ini merupakan kelanjutan dari pembelajaran mengenai persamaan garis singgung lingkaran melalui titik pada lingkaran, sehingga murid diarahkan untuk mengembangkan pemahamannya dalam menentukan persamaan garis singgung berdasarkan informasi gradien dan menerapkannya pada berbagai konteks masalah.</p>
+</div>
+<div class="analysis-item b">
+<h4>Tujuan Pembuatan</h4>
+<p>Modul ajar ini disusun sebagai pedoman pelaksanaan pembelajaran yang sistematis dan berpusat pada murid, sekaligus membantu murid memahami konsep persamaan garis singgung lingkaran melalui kegiatan pemecahan masalah dan diskusi kelompok. Secara khusus, pembelajaran diarahkan agar murid mampu menentukan gradien berdasarkan hubungan kesejajaran, ketegaklurusan, atau sudut terhadap sumbu \(X\), menemukan bentuk persamaan garis singgung lingkaran dengan gradien tertentu, serta menerapkannya pada permasalahan kontekstual. Selain mendukung pencapaian kompetensi matematika, modul ini bertujuan mengembangkan penalaran kritis, kolaborasi, kemandirian, dan komunikasi matematis melalui permainan kartu soal, penyelesaian LKPD, presentasi, dan refleksi pembelajaran.</p>
+</div>
+<div class="analysis-item b">
+<h4>Kelebihan</h4>
+<p>Kelebihan modul ini terletak pada perpaduan antara pembelajaran berbasis masalah, kerja kelompok, dan gamifikasi yang memberikan kesempatan kepada murid untuk belajar melalui aktivitas yang lebih menarik. Penggunaan dadu dan kartu soal dengan tingkat kesulitan berbeda dapat mendorong murid berdiskusi, menentukan strategi penyelesaian, dan berusaha menyelesaikan lebih banyak soal. Konteks masalah yang beragam, seperti menara BTS, taman kota, kolam ikan, jalur pipa, dan kubah observatorium, juga membantu menghubungkan konsep garis singgung dengan situasi yang lebih konkret. Selain itu, modul telah memuat tujuan pembelajaran, tahapan kegiatan, pembagian peran kelompok, asesmen, serta rubrik penilaian yang mencakup pemahaman konsep, ketepatan prosedur, perhitungan, penalaran, komunikasi, dan kolaborasi. Berdasarkan refleksi pelaksanaan, gamifikasi pada pertemuan ini terbukti mampu meningkatkan antusiasme murid yang pada awal pembelajaran belum terlalu terlihat, bahkan mereka meminta tambahan waktu untuk melanjutkan pengerjaan soal. Hal ini menunjukkan bahwa strategi yang dipilih memiliki potensi untuk meningkatkan keterlibatan murid dalam pembelajaran.</p>
+</div>
+<div class="analysis-item">
+<h4>Kekurangan</h4>
+<p>Kekurangan modul ini terutama berkaitan dengan alokasi waktu dan keseimbangan antara kegiatan inti dengan kegiatan penutup. Waktu yang relatif panjang dialokasikan untuk permainan kartu dan penyelesaian LKPD, sedangkan kegiatan presentasi, evaluasi, refleksi, dan penutup tetap memerlukan waktu yang cukup agar tujuan pembelajaran dapat tercapai secara menyeluruh. Pada pelaksanaannya, tambahan waktu untuk mengakomodasi antusiasme murid, ditambah keterlambatan dimulainya pembelajaran akibat guru pada jam sebelumnya terlambat meninggalkan kelas, menyebabkan hanya satu kelompok yang sempat melakukan presentasi dan kegiatan refleksi serta penutup harus dilakukan secara singkat. Selain itu, penggunaan GeoGebra masih memerlukan pendampingan bagi murid yang belum terbiasa mengoperasikannya. Modul juga perlu memperhatikan pemerataan partisipasi dalam kelompok agar murid yang lebih aktif tidak mendominasi pengerjaan soal. Oleh karena itu, alokasi waktu setiap tahap, kejelasan aturan permainan, dan pembagian tanggung jawab anggota kelompok masih perlu disempurnakan berdasarkan kondisi nyata di kelas.</p>
+</div>
+<div class="analysis-item">
+<h4>Kendala Penyusunan dan Implementasi</h4>
+<p>Kendala penyusunan modul meliputi penentuan aktivitas yang sesuai dengan materi, perancangan kartu soal dengan variasi tingkat kesulitan, serta pengalokasian waktu untuk seluruh tahapan pembelajaran. Dalam implementasinya, kendala utama muncul karena pembelajaran dimulai lebih lambat dari rencana dan murid membutuhkan waktu yang cukup panjang untuk menyelesaikan soal. Antusiasme murid dalam permainan menjadi hal positif, tetapi juga membuat saya perlu mengambil keputusan untuk memberikan tambahan waktu agar semangat belajar tetap terjaga. Keputusan tersebut berdampak pada berkurangnya waktu untuk presentasi, refleksi, dan penutup. Saya juga menghadapi tantangan dalam memastikan setiap kelompok memperoleh pendampingan yang memadai serta dalam membantu murid menggunakan GeoGebra untuk memvisualisasikan dan memverifikasi jawaban. Pengalaman ini menunjukkan bahwa modul ajar tidak cukup hanya dirancang secara sistematis, tetapi juga perlu dilengkapi dengan skenario alternatif apabila waktu pembelajaran berubah atau aktivitas tertentu membutuhkan waktu lebih lama dari perkiraan.</p>
+</div>
+<div class="analysis-item b">
+<h4>Faktor Keberhasilan</h4>
+<p>Faktor yang mendukung keberhasilan pelaksanaan pembelajaran melalui modul ini adalah keterkaitan materi baru dengan materi prasyarat, penggunaan media yang menarik, penyediaan soal yang bervariasi, serta kesempatan bagi murid untuk bekerja sama menyelesaikan masalah. Apersepsi yang menghubungkan garis singgung melalui titik pada lingkaran dengan garis singgung berdasarkan gradien membantu murid memahami arah pembelajaran. Penggunaan dadu dan kartu soal berkode QR selanjutnya mendorong murid untuk berdiskusi dan menunjukkan antusiasme dalam mengerjakan soal. Dukungan guru selama proses penyelidikan juga berperan dalam membantu murid yang mengalami kesulitan, sedangkan LKPD memberikan struktur pengerjaan agar langkah penyelesaian lebih terarah. Meskipun beberapa tahapan pembelajaran belum terlaksana secara optimal, pengalaman ini menunjukkan bahwa pemilihan strategi yang sesuai dengan karakteristik murid dapat meningkatkan keterlibatan mereka. Keberhasilan pembelajaran pada pelaksanaan berikutnya akan semakin didukung oleh manajemen waktu yang lebih baik, instruksi permainan yang jelas, pembagian peran yang merata, serta konsistensi dalam melaksanakan refleksi dan asesmen formatif.</p>
+</div>
+</div>
+<div class="analysis-grid theory-grid">
+<div class="analysis-item b">
+<h4>Landasan Teori &amp; Pedagogi</h4>
+<p>Modul ajar ini berlandaskan pendekatan Pembelajaran Mendalam (Deep Learning) yang mencakup pengalaman belajar Memahami (M1), Mengaplikasi (M2), dan Merefleksi (M3), serta model Problem-Based Learning (PBL) yang mendorong murid membangun pemahaman melalui penyelesaian masalah. Secara teoretis, rancangan ini berkaitan dengan teori konstruktivisme, yang memandang bahwa pengetahuan dibangun secara aktif oleh murid melalui pengalaman dan pengaitan informasi baru dengan pengetahuan sebelumnya. Hal tersebut diterapkan melalui apersepsi yang menghubungkan konsep garis singgung lingkaran melalui titik pada lingkaran dengan konsep garis singgung berdasarkan gradien, kemudian dilanjutkan dengan penyelesaian masalah kontekstual. Kegiatan diskusi kelompok juga berkaitan dengan teori konstruktivisme sosial Lev Vygotsky, yang menekankan peran interaksi sosial dan bantuan bertahap (scaffolding) dalam proses belajar. Dalam pelaksanaannya, murid bekerja sama menyelesaikan kartu soal, bertukar strategi, dan memperoleh bimbingan guru ketika mengalami kesulitan. Selain itu, penggunaan dadu, kartu soal, dan sistem poin menerapkan prinsip gamifikasi untuk meningkatkan motivasi serta keterlibatan murid, sedangkan konteks seperti menara BTS, taman kota, kolam ikan, dan jalur pipa mencerminkan pembelajaran kontekstual yang menghubungkan konsep matematika dengan situasi nyata. Namun, berdasarkan refleksi pelaksanaan, antusiasme yang muncul melalui gamifikasi perlu diimbangi dengan pengelolaan waktu, pemerataan partisipasi, dan penguatan konsep agar murid tidak hanya berorientasi pada perolehan poin. Dengan demikian, landasan pedagogis modul ini menempatkan murid sebagai peserta aktif dalam membangun pemahaman, bekerja sama, menerapkan konsep, dan merefleksikan proses belajarnya.</p>
+</div>
+</div>
+<div class="ornament-divider"><hr/><span>Dokumen Artefak Siklus 1</span><hr/></div>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/1Nz5ePNEOv3N48KPLMjQ3KOT03S-k7FXo/preview" title="Modul Ajar Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/1Nz5ePNEOv3N48KPLMjQ3KOT03S-k7FXo/view?usp=drive_link" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/1Nz5ePNEOv3N48KPLMjQ3KOT03S-k7FXo/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div>
+</div>
+<div class="artefak-panel" id="panel-s1-lkpd">
+<div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><rect height="18" rx="2" width="18" x="3" y="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+</div>
+<div>
+<h3>LKPD</h3>
+<p>Siklus 1 · Matematika</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item"><h4>Konteks Artefak</h4><p>Artefak ini berupa Lembar Kerja Peserta Didik (LKPD) Matematika Tingkat Lanjut kelas XII-N di SMA Negeri 4 Kendari yang dirancang untuk mendukung pembelajaran materi persamaan garis singgung lingkaran dengan gradien \(m\). LKPD ini merupakan bagian dari pembelajaran yang menggunakan model Problem-Based Learning (PBL), strategi kooperatif, dan gamifikasi melalui permainan kartu soal. Murid bekerja dalam kelompok untuk menyelesaikan kartu soal yang diperoleh melalui pengocokan dadu, kemudian menuliskan proses penyelesaian pada lembar pengerjaan yang telah disediakan. Soal disusun dalam tiga tingkat kesulitan, yaitu mudah, menengah, dan menantang, dengan konteks yang beragam, seperti jangkauan sinyal menara BTS, taman kota, kolam ikan, jalur pipa air, dan kubah observatorium. LKPD juga menyediakan aktivitas opsional berupa menggambar lingkaran pada koordinat Kartesius dan memvisualisasikan persamaan lingkaran beserta garis singgungnya menggunakan GeoGebra.</p></div>
+<div class="analysis-item b"><h4>Tujuan Pembuatan</h4><p>LKPD ini disusun untuk menjadi panduan bagi murid dalam memahami dan menerapkan konsep persamaan garis singgung lingkaran berdasarkan gradien melalui kegiatan pemecahan masalah secara berkelompok. Secara khusus, LKPD membantu murid mengidentifikasi titik pusat dan jari-jari lingkaran, menentukan gradien berdasarkan hubungan kesejajaran, ketegaklurusan, atau sudut terhadap sumbu koordinat, serta menyusun persamaan garis singgung yang memenuhi kondisi pada soal. Selain itu, LKPD dirancang untuk melatih kemampuan penalaran matematis, ketelitian perhitungan, komunikasi, dan kolaborasi melalui pembagian peran serta kegiatan pemeriksaan jawaban oleh guru. Adanya soal opsional dan variasi tingkat kesulitan juga memberikan kesempatan kepada murid untuk mengeksplorasi permasalahan lebih lanjut sesuai kemampuan kelompoknya, sementara penggunaan GeoGebra membantu menghubungkan hasil perhitungan aljabar dengan representasi visual.</p></div>
+<div class="analysis-item b"><h4>Kelebihan</h4><p>Kelebihan LKPD ini terletak pada perpaduan antara latihan matematis, konteks masalah yang bervariasi, dan mekanisme permainan yang dapat meningkatkan keterlibatan murid. Aturan permainan disusun secara bertahap, mulai dari melempar dadu, menentukan kartu soal, menyelesaikan bagian wajib, hingga mengerjakan bagian opsional untuk memperoleh poin tambahan. Pembagian soal berdasarkan tingkat kesulitan memberikan variasi tantangan, sedangkan pemisahan antara bagian wajib dan opsional memungkinkan murid memprioritaskan kompetensi utama sebelum mengeksplorasi aktivitas tambahan. LKPD juga menyediakan format pengerjaan yang membantu murid mencatat informasi soal, menentukan pusat dan jari-jari lingkaran, serta menyusun persamaan garis singgung secara lebih terstruktur. Penggunaan konteks seperti taman kota dan jalur pipa membantu menunjukkan penerapan konsep matematika dalam situasi yang dapat dibayangkan murid. Berdasarkan refleksi implementasi, dadu dan kartu soal berkode QR berhasil meningkatkan antusiasme murid, bahkan beberapa kelompok meminta tambahan waktu untuk menyelesaikan lebih banyak soal. Hal ini memperlihatkan bahwa desain LKPD memiliki potensi untuk menciptakan pengalaman belajar yang aktif dan menyenangkan.</p></div>
+<div class="analysis-item"><h4>Kekurangan</h4><p>Kekurangan LKPD ini terutama berkaitan dengan kebutuhan waktu untuk menyelesaikan aktivitas dan memahami aturan permainan. Murid perlu memahami mekanisme pengambilan kartu, pembagian tugas, pengerjaan bagian wajib dan opsional, serta prosedur pemeriksaan jawaban sebelum melanjutkan permainan. Jika petunjuk belum dipahami secara menyeluruh, guru perlu memberikan penjelasan tambahan yang dapat mengurangi waktu untuk kegiatan inti lainnya. Hal ini sejalan dengan pengalaman implementasi ketika antusiasme murid dalam mengerjakan kartu soal menyebabkan waktu pengerjaan bertambah sehingga hanya satu kelompok yang sempat melakukan presentasi, sementara refleksi dan penutup berlangsung singkat. Selain itu, kegiatan opsional seperti menggambar grafik dan menggunakan GeoGebra berpotensi memerlukan pendampingan tambahan, terutama bagi murid yang belum terbiasa menggunakan media tersebut. LKPD ini juga masih memerlukan penguatan dalam pemerataan partisipasi agar seluruh anggota kelompok memahami langkah penyelesaian, bukan hanya mengandalkan anggota yang lebih menguasai materi. Oleh karena itu, petunjuk perlu dibuat lebih ringkas dan mudah diikuti, alokasi waktu permainan perlu dibatasi, serta pembagian peran harus diterapkan secara konsisten agar seluruh tahapan pembelajaran dapat terlaksana dengan baik.</p></div>
+</div>
+<div class="analysis-grid theory-grid">
+<div class="analysis-item b">
+<h4>Landasan Teori &amp; Pedagogi</h4>
+<p>LKPD ini berlandaskan prinsip konstruktivisme, yaitu murid membangun pemahaman melalui keterlibatan aktif dalam menyelesaikan masalah dan menghubungkan konsep baru dengan pengetahuan sebelumnya. Hal ini terlihat dari soal-soal yang mengharuskan murid menggunakan pemahaman tentang gradien, persamaan garis, titik pusat, dan jari-jari lingkaran untuk menemukan persamaan garis singgung. Desain kegiatan kelompok juga berkaitan dengan teori konstruktivisme sosial Lev Vygotsky, yang menekankan peran interaksi sosial dan dukungan bertahap (scaffolding) dalam proses belajar. Murid memperoleh kesempatan untuk bertukar strategi, memeriksa jawaban, dan menerima bimbingan guru ketika mengalami kesulitan. Selain itu, mekanisme dadu, kartu soal, dan poin menerapkan prinsip gamifikasi untuk mendorong motivasi dan partisipasi, sedangkan penggunaan konteks menara BTS, taman kota, kolam ikan, dan jalur pipa mencerminkan pembelajaran kontekstual. Aktivitas opsional menggunakan GeoGebra turut mendukung hubungan antara representasi aljabar dan visual. Secara pedagogis, LKPD ini mengintegrasikan pengalaman Memahami, Mengaplikasi, dan Merefleksi dalam Pembelajaran Mendalam, meskipun pelaksanaan di kelas menunjukkan bahwa tahapan presentasi dan refleksi perlu mendapat alokasi waktu yang lebih terjamin. Dengan demikian, LKPD tidak hanya berfungsi sebagai kumpulan latihan soal, tetapi juga sebagai sarana untuk mengembangkan penalaran matematis, kerja sama, dan kemandirian murid.</p>
+</div>
+</div>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/1CjXW2sgnWDuhs_6FDOlfNFlAlbks8XCs/preview" title="LKPD Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/1CjXW2sgnWDuhs_6FDOlfNFlAlbks8XCs/view?usp=drive_link" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/1CjXW2sgnWDuhs_6FDOlfNFlAlbks8XCs/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div>
+</div>
+<div class="artefak-panel" id="panel-s1-media">
+<div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><rect height="18" rx="2" width="18" x="3" y="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+</div>
+<div>
+<h3>Media Pembelajaran</h3>
+<p>Siklus 1 · Matematika</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item"><h4>Konteks Artefak</h4><p>Artefak media pembelajaran ini terdiri atas PowerPoint (PPT), kartu soal dan dadu, GeoGebra, serta Google Form untuk refleksi yang digunakan dalam pembelajaran Matematika Tingkat Lanjut kelas XII-N di SMA Negeri 4 Kendari. PPT berisi apersepsi, tujuan pembelajaran, pemeriksaan pengetahuan prasyarat, penurunan rumus persamaan garis singgung lingkaran berdasarkan gradien, contoh soal, aturan permainan, dan refleksi. Kartu soal dan dadu digunakan sebagai media gamifikasi dalam kegiatan kelompok, dengan lima kartu yang mengangkat konteks menara BTS, taman kota, kolam ikan, jalur pipa air, dan kubah observatorium serta memiliki tingkat kesulitan berbeda. GeoGebra digunakan untuk memvisualisasikan lingkaran dan garis singgung sekaligus memverifikasi hasil perhitungan murid, sedangkan Google Form digunakan untuk mengumpulkan refleksi mengenai strategi kelompok, keaktifan anggota, kesulitan yang dihadapi, dan konsep yang diperoleh. Keempat media tersebut dirancang untuk saling melengkapi dalam mendukung pembelajaran berbasis masalah dan aktivitas kolaboratif.</p></div>
+<div class="analysis-item b"><h4>Tujuan Pembuatan</h4><p>Media pembelajaran ini dibuat untuk membantu murid memahami konsep persamaan garis singgung lingkaran dengan gradien tertentu melalui penyajian materi, contoh matematis, latihan kontekstual, dan visualisasi. PPT berfungsi sebagai panduan penjelasan materi secara terstruktur, sedangkan kartu soal dan dadu dirancang untuk meningkatkan keterlibatan murid melalui permainan yang menuntut kerja sama dan pemecahan masalah. GeoGebra dimanfaatkan untuk membantu murid menghubungkan persamaan aljabar dengan representasi grafik sehingga mereka dapat memeriksa apakah garis yang diperoleh benar-benar menyinggung lingkaran. Sementara itu, Google Form digunakan untuk memfasilitasi refleksi pembelajaran agar murid dapat mengungkapkan strategi yang digunakan, kendala yang dialami, dan pemahaman yang diperoleh. Secara keseluruhan, media-media ini bertujuan mendukung pencapaian tujuan pembelajaran sekaligus mengembangkan penalaran kritis, komunikasi matematis, kemandirian, dan kolaborasi murid.</p></div>
+<div class="analysis-item b"><h4>Kelebihan</h4><p>Kelebihan media pembelajaran ini terletak pada variasi bentuk dan fungsi yang saling melengkapi. PPT menyajikan materi secara sistematis, mulai dari pengaitan dengan pertemuan sebelumnya hingga penurunan rumus dan contoh soal, sehingga dapat membantu murid mengikuti alur pembelajaran. Kartu soal dan dadu memberikan pengalaman belajar yang lebih interaktif melalui mekanisme pemilihan soal, pembagian peran, dan perolehan poin berdasarkan ketepatan jawaban. Variasi tingkat kesulitan kartu juga memberikan tantangan yang berbeda bagi kelompok, sedangkan konteks soal membantu murid melihat penerapan konsep matematika dalam situasi yang dapat dibayangkan. GeoGebra memberikan dukungan visual untuk memahami hubungan antara lingkaran dan garis singgung, sekaligus membantu memverifikasi hasil penyelesaian. Google Form memudahkan pengumpulan refleksi secara terstruktur dan membantu guru mengidentifikasi kesulitan yang dialami murid. Berdasarkan refleksi implementasi, penggunaan dadu dan kartu soal terbukti meningkatkan antusiasme murid, bahkan mereka meminta tambahan waktu untuk menyelesaikan lebih banyak soal. Hal ini menunjukkan bahwa kombinasi media presentasi, permainan, visualisasi digital, dan refleksi memiliki potensi untuk menciptakan pengalaman belajar yang aktif dan menarik.</p></div>
+<div class="analysis-item"><h4>Kekurangan</h4><p>Kekurangan media pembelajaran ini terutama berkaitan dengan pengelolaan waktu, kebutuhan pendampingan, dan pemerataan partisipasi murid. PPT memuat penjelasan matematis yang perlu disampaikan secara terarah agar tidak menghabiskan terlalu banyak waktu sebelum murid melakukan aktivitas. Kartu soal dan dadu memerlukan penjelasan aturan permainan, pembagian peran, serta prosedur pengerjaan dan pemeriksaan jawaban. Dalam pelaksanaannya, antusiasme murid dan tambahan waktu bermain menyebabkan kegiatan presentasi hanya dilakukan oleh satu kelompok, sedangkan refleksi dan penutup berlangsung singkat. GeoGebra juga belum sepenuhnya mudah digunakan oleh semua murid sehingga diperlukan bimbingan untuk mengoperasikannya secara efektif. Sementara itu, Google Form bergantung pada ketersediaan perangkat dan waktu untuk mengisi refleksi serta membahas hasilnya. Selain itu, murid yang lebih aktif berpotensi mendominasi permainan maupun pengerjaan soal jika pembagian peran tidak diterapkan secara konsisten. Oleh karena itu, media perlu dilengkapi petunjuk yang lebih ringkas, batas waktu yang jelas, dan mekanisme partisipasi yang memastikan seluruh anggota kelompok terlibat. Penggunaan setiap media juga perlu diarahkan pada pencapaian konsep, bukan hanya pada aktivitas atau perolehan poin.</p></div>
+</div>
+<div class="analysis-grid theory-grid">
+<div class="analysis-item b">
+<h4>Landasan Teori &amp; Pedagogi</h4>
+<p>Media pembelajaran ini dapat dikaitkan dengan teori konstruktivisme yang memandang bahwa murid membangun pemahaman melalui keterlibatan aktif dalam mengolah informasi dan menyelesaikan masalah. PPT menyediakan landasan konseptual, sedangkan kartu soal dan dadu memberikan kesempatan kepada murid untuk menerapkan pengetahuan prasyarat dalam konteks masalah yang berbeda. Aktivitas diskusi kelompok juga sejalan dengan konstruktivisme sosial Lev Vygotsky, khususnya pentingnya interaksi antarmurid dan bantuan bertahap (scaffolding) dari guru ketika murid mengalami kesulitan. Penggunaan permainan mencerminkan prinsip gamifikasi untuk meningkatkan motivasi dan partisipasi, sementara GeoGebra mendukung pembelajaran melalui representasi visual dan eksplorasi hubungan antara persamaan matematis dengan grafik. Google Form mendukung asesmen formatif dan refleksi, karena informasi yang diberikan murid dapat digunakan untuk mengenali kesulitan serta merencanakan tindak lanjut pembelajaran. Secara pedagogis, media-media ini terintegrasi dengan pendekatan Pembelajaran Mendalam melalui pengalaman Memahami, Mengaplikasi, dan Merefleksi, serta model Problem-Based Learning yang menekankan penyelesaian masalah. Berdasarkan hasil refleksi, penerapan media perlu disertai pengelolaan waktu yang baik, instruksi yang jelas, dan pendampingan yang merata agar aktivitas yang menarik tetap menghasilkan pemahaman matematis yang mendalam.</p>
+</div>
+</div>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/1JUgAG8islziSyPiWMbA2EOuxevyx1Zqm/preview" title="Media Pembelajaran Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/1JUgAG8islziSyPiWMbA2EOuxevyx1Zqm/view?usp=drive_link" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/1JUgAG8islziSyPiWMbA2EOuxevyx1Zqm/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div>
+</div>
+<div class="artefak-panel" id="panel-s1-karya">
+<div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>
+</div>
+<div>
+<h3>Contoh Hasil Kerja Peserta Didik</h3>
+<p>Siklus 1 · Matematika</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item"><h4>Kelebihan yang Tercermin</h4><p>Hasil kerja kelompok menunjukkan adanya upaya untuk menerapkan konsep persamaan garis singgung lingkaran dengan gradien m pada beberapa variasi soal. Murid telah mencoba mengidentifikasi titik pusat dan jari-jari lingkaran, menentukan persamaan garis singgung, serta menggambarkan lingkaran pada koordinat Kartesius. Kelompok juga mengerjakan beberapa kartu dengan tingkat kesulitan berbeda, termasuk soal yang menantang, sehingga terlihat adanya usaha untuk menerapkan konsep pada beragam permasalahan. Pada beberapa bagian, murid telah mencoba menggunakan bentuk rumus persamaan garis singgung dan melakukan substitusi nilai yang diketahui ke dalam rumus tersebut. Hal ini menunjukkan bahwa murid mulai memahami prosedur dasar penyelesaian dan berusaha menghubungkan konsep gradien, pusat lingkaran, serta jari-jari dalam menentukan persamaan garis singgung. Selain itu, upaya mengerjakan lebih dari satu kartu menunjukkan keterlibatan kelompok dalam aktivitas gamifikasi yang dirancang untuk mendorong latihan dan penerapan konsep secara aktif.</p></div>
+<div class="analysis-item b"><h4>Area yang Perlu Ditingkatkan</h4><p>Aspek yang perlu ditingkatkan adalah ketelitian perhitungan, kelengkapan langkah penyelesaian, dan kerapian penulisan jawaban. Beberapa bagian hasil kerja masih sulit dibaca atau belum menunjukkan alur perhitungan secara jelas, sehingga ketepatan penentuan titik pusat, jari-jari, gradien, dan persamaan garis singgung belum dapat dipastikan sepenuhnya. Murid perlu menuliskan informasi yang diketahui, menentukan nilai setiap variabel, memilih rumus yang sesuai, serta menunjukkan proses substitusi dan penyederhanaan secara berurutan. Selain itu, jawaban sebaiknya dilengkapi dengan kedua kemungkinan persamaan garis singgung, yaitu untuk tanda positif dan negatif, sesuai dengan informasi pada soal. Bagian menggambar grafik juga perlu dikerjakan dengan lebih teliti agar dapat membantu memeriksa kesesuaian hasil perhitungan. Ke depannya, guru perlu memberikan penguatan terhadap penggunaan rumus, menyediakan contoh penyelesaian bertahap, dan membimbing murid memeriksa kembali hasilnya, termasuk melalui GeoGebra. Dengan demikian, murid tidak hanya mampu memperoleh jawaban, tetapi juga dapat menjelaskan alasan matematis dan mempertanggungjawabkan setiap langkah penyelesaiannya.</p></div>
+</div>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/1CEydjWhDegs8hw2D3AMNLl-nm9T8QaWu/preview" title="Kerja Siswa Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/1CEydjWhDegs8hw2D3AMNLl-nm9T8QaWu/view?usp=drive_link" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/1CEydjWhDegs8hw2D3AMNLl-nm9T8QaWu/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div>
+</div>
+<div class="artefak-panel" id="panel-s1-dokumentasi">
+<div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><rect height="18" rx="2" width="18" x="3" y="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+</div>
+<div>
+<h3>Dokumentasi Pembelajaran</h3>
+<p>Siklus 1 · Matematika</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item"><h4>Deskripsi Dokumentasi</h4><p>Dokumentasi ini menggambarkan pelaksanaan pembelajaran Matematika di kelas XII-N pada materi persamaan garis singgung lingkaran. Pada dokumentasi pertama, peserta didik terlihat bekerja bersama dalam kelompok, berdiskusi, membaca LKPD, serta memanfaatkan telepon genggam sebagai sumber atau media pendukung pembelajaran. Dokumentasi kedua menunjukkan interaksi antara guru dan peserta didik saat menggunakan kartu soal berkode QR dan media permainan dadu. Sementara itu, dokumentasi ketiga memperlihatkan guru menjelaskan materi di papan tulis, sedangkan peserta didik mengikuti kegiatan pembelajaran dari tempat duduk masing-masing. Secara keseluruhan, dokumentasi ini menunjukkan perpaduan kegiatan penjelasan materi, diskusi kelompok, penggunaan media pembelajaran, dan pendampingan peserta didik selama proses pembelajaran.</p></div>
+<div class="analysis-item b"><h4>Refleksi</h4><p>Pelaksanaan pembelajaran memberikan pengalaman bagi saya untuk mengombinasikan penjelasan materi dengan aktivitas kolaboratif dan media yang lebih interaktif. Penggunaan LKPD, kartu soal berkode QR, dan dadu membantu menghadirkan variasi kegiatan sehingga peserta didik memiliki kesempatan untuk berdiskusi dan mencoba menyelesaikan permasalahan secara berkelompok. Interaksi selama kegiatan juga menjadi kesempatan bagi saya untuk mengamati proses belajar serta memberikan pendampingan ketika diperlukan. Meskipun demikian, saya perlu terus meningkatkan pengelolaan waktu, memastikan setiap anggota kelompok terlibat aktif, dan memberikan petunjuk penggunaan media secara jelas agar kegiatan tidak terlalu banyak menghabiskan waktu. Ke depannya, saya akan berupaya menjaga keseimbangan antara penjelasan konsep, aktivitas kelompok, pembahasan hasil pekerjaan, dan refleksi agar tujuan pembelajaran dapat tercapai dengan lebih optimal.</p></div>
+</div>
+<div class="documentation-gallery">
+<figure class="documentation-photo">
+<a class="media-link" href="https://drive.google.com/file/d/16iZapsGljLDa5pZWzmhfBtKt1hVneXWi/view?usp=drive_link" rel="noopener" target="_blank">
+<img alt="Foto 1 dokumentasi siklus 1" src="https://drive.google.com/thumbnail?id=16iZapsGljLDa5pZWzmhfBtKt1hVneXWi&amp;sz=s500"/>
+</a>
+<figcaption>Foto 1 · Siklus 1</figcaption>
+</figure>
+<figure class="documentation-photo">
+<a class="media-link" href="https://drive.google.com/file/d/1R3iyNzX_5TUwJdNe1yuPNGMdoBK16mcc/view?usp=drive_link" rel="noopener" target="_blank">
+<img alt="Foto 2 dokumentasi siklus 1" src="https://drive.google.com/thumbnail?id=1R3iyNzX_5TUwJdNe1yuPNGMdoBK16mcc&amp;sz=s500"/>
+</a>
+<figcaption>Foto 2 · Siklus 1</figcaption>
+</figure>
+<figure class="documentation-photo">
+<a class="media-link" href="https://drive.google.com/file/d/1yAY2hV9S8jgfff5VqOMMJ27gpcT_Qfha/view?usp=drive_link" rel="noopener" target="_blank">
+<img alt="Foto 3 dokumentasi siklus 1" src="https://drive.google.com/thumbnail?id=1yAY2hV9S8jgfff5VqOMMJ27gpcT_Qfha&amp;sz=s500"/>
+</a>
+<figcaption>Foto 3 · Siklus 1</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="artefak-panel" id="panel-s1-penilaian-ppl"><div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><rect height="18" rx="2" width="18" x="3" y="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+</div>
+<div>
+<h3>Materi Pembelajaran</h3>
+<p>Siklus 1 · Matematika</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item"><h4>Konteks Artefak</h4><p>Artefak ini berupa materi ajar Matematika Tingkat Lanjut kelas XII-N di SMA Negeri 4 Kendari yang disusun untuk pembelajaran pertemuan 2 dengan alokasi waktu 3 JP atau 135 menit. Materi berfokus pada persamaan garis singgung lingkaran dengan gradien m, sebagai kelanjutan dari pembelajaran mengenai garis singgung melalui titik pada lingkaran. Materi ajar disusun secara sistematis, mulai dari penguatan konsep prasyarat, penurunan rumus untuk lingkaran berpusat di titik asal maupun di titik P(a,b), penentuan gradien berdasarkan hubungan sejajar, tegak lurus, atau sudut terhadap sumbu X, hingga contoh soal, latihan, tantangan, rangkuman, dan pertanyaan refleksi. Materi juga memuat penerapan konsep dalam situasi nyata, seperti perancangan jalan, pipa, dan jalur yang menyinggung suatu daerah berbentuk lingkaran. Artefak ini digunakan sebagai sumber belajar untuk mendukung pelaksanaan pembelajaran berbasis masalah dan gamifikasi melalui permainan kartu soal.</p></div>
+<div class="analysis-item b"><h4>Tujuan Pembuatan</h4><p>Materi ajar ini disusun untuk menyediakan sumber belajar yang terstruktur agar murid dapat memahami konsep persamaan garis singgung lingkaran dengan gradien tertentu secara bertahap. Materi dirancang untuk membantu murid mengingat kembali konsep prasyarat, memahami proses penurunan rumus, menentukan gradien berdasarkan informasi pada soal, serta menerapkan rumus dalam berbagai bentuk permasalahan. Selain itu, penyajian contoh soal dan latihan bertujuan membantu murid mengembangkan ketelitian perhitungan dan kemampuan memilih strategi penyelesaian yang sesuai. Bagian kesalahan yang sering terjadi disertakan untuk mengantisipasi miskonsepsi, misalnya kesalahan menentukan pusat dan jari-jari, menentukan gradien garis tegak lurus, serta melupakan tanda \(\pm\) yang menghasilkan dua kemungkinan garis singgung. Dengan demikian, materi ajar tidak hanya berfungsi sebagai bahan penjelasan guru, tetapi juga sebagai panduan belajar mandiri yang dapat digunakan murid ketika mengerjakan LKPD dan permainan kartu soal.</p></div>
+<div class="analysis-item b"><h4>Kelebihan</h4><p>Kelebihan materi ajar ini terletak pada penyajiannya yang runtut, dimulai dari konsep prasyarat hingga penerapan rumus pada variasi soal. Penurunan rumus ditunjukkan melalui penggunaan diskriminan persamaan kuadrat, kemudian diperkuat dengan pendekatan jarak pusat ke garis sebagai alternatif untuk memeriksa jawaban. Adanya tabel hubungan gradien, langkah penyelesaian, contoh soal dengan kondisi berbeda, serta bagian kesalahan yang sering terjadi membantu murid memahami prosedur sekaligus mengantisipasi kekeliruan. Materi juga dilengkapi latihan bertahap, soal tantangan, rangkuman, dan refleksi yang dapat mendukung penguatan pemahaman. Konteks penerapan seperti jalan, pipa, dan area melingkar membantu menunjukkan bahwa konsep yang dipelajari memiliki kegunaan dalam pemecahan masalah. Selain itu, struktur materi selaras dengan penggunaan kartu soal pada kegiatan gamifikasi sehingga murid mempunyai acuan untuk menyelesaikan soal dan memeriksa kembali langkah perhitungannya.</p></div>
+<div class="analysis-item"><h4>Kekurangan</h4><p>Kekurangan materi ajar ini adalah sebagian penjelasannya masih berfokus pada manipulasi aljabar dan penggunaan rumus sehingga murid yang belum menguasai konsep prasyarat berpotensi mengalami kesulitan. Penurunan rumus menggunakan diskriminan memerlukan pemahaman terhadap persamaan kuadrat, sedangkan pendekatan jarak pusat ke garis juga membutuhkan penguasaan rumus jarak titik ke garis. Meskipun ilustrasi dan contoh telah disediakan, murid masih dapat membutuhkan penjelasan tambahan untuk memahami mengapa terdapat dua garis singgung dengan gradien yang sama dan bagaimana hubungan geometris tersebut ditunjukkan pada grafik. Dari refleksi pembelajaran, saya juga menemukan bahwa murid membutuhkan pendampingan ketika menggunakan GeoGebra dan waktu pengerjaan soal cenderung lebih panjang dari perkiraan. Oleh karena itu, materi ajar dapat dikembangkan dengan menambahkan pertanyaan penuntun pada setiap tahap penurunan rumus, visualisasi yang lebih eksploratif, serta contoh penyelesaian yang secara bertahap mengurangi bantuan. Penggunaan bagian tertentu juga perlu disesuaikan dengan alokasi waktu agar seluruh murid dapat memahami konsep utama sebelum melanjutkan ke soal yang lebih menantang.</p></div>
+</div>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/1c3XaPzdkUQxJE41R2aT5QeAAKr93rK1_/preview" title="Materi Pembelajaran Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/1c3XaPzdkUQxJE41R2aT5QeAAKr93rK1_/view?usp=drive_link" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/1c3XaPzdkUQxJE41R2aT5QeAAKr93rK1_/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div><div class="artefak-card">
+</div></div>
+<div class="artefak-panel" id="panel-s1-penilaian-mandiri">
+<div class="artefak-card">
+<div class="artefak-card-header">
+<div class="artefak-icon">
+<svg fill="none" height="22" stroke="white" stroke-width="1.8" viewbox="0 0 24 24" width="22"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg>
+</div>
+<div>
+<h3>Penilaian PPL</h3>
+<p>PPL Mandiri · GP &amp; DPL</p>
+</div>
+</div>
+<div class="artefak-card-body">
+<div class="analysis-grid">
+<div class="analysis-item">
+<h4>Latar Penilaian</h4>
+<p>Penilaian terhadap rancangan dan pelaksanaan pembelajaran dilakukan untuk memperoleh gambaran mengenai kesiapan perangkat pembelajaran serta kemampuan saya dalam menerapkannya di kelas XII-N SMA Negeri 4 Kendari. Penilaian rancangan pembelajaran memperoleh skor 64 dari 80 atau nilai 80, sedangkan penilaian praktik mengajar memperoleh skor 63 dari 80 atau nilai 78,75. Pada aspek perencanaan, rancangan telah memuat tujuan pembelajaran, apersepsi, tahapan kegiatan, variasi media, dan instrumen penilaian yang cukup jelas. Pada pelaksanaannya, penggunaan dadu dan kartu soal berkode QR mampu meningkatkan antusiasme peserta didik serta mendorong diskusi kelompok. Namun, masih terdapat beberapa aspek yang perlu diperbaiki, terutama pemetaan kemampuan peserta didik, perincian langkah pendampingan, efektivitas penggunaan media, serta pengelolaan waktu yang menyebabkan presentasi, refleksi, dan penutupan pembelajaran belum terlaksana secara optimal.</p>
+</div>
+<div class="analysis-item b">
+<h4>Manfaat Reflektif</h4>
+<p>Hasil penilaian ini menjadi bahan refleksi bagi saya untuk melihat kesesuaian antara perencanaan dan pelaksanaan pembelajaran sekaligus mengenali aspek yang sudah berjalan baik dan yang masih perlu ditingkatkan. Saya menyadari bahwa rancangan yang terperinci dan penggunaan media yang menarik belum cukup apabila tidak diimbangi dengan pengelolaan waktu yang efektif serta keterlibatan peserta didik yang merata. Oleh karena itu, saya perlu menetapkan batas waktu yang lebih tegas untuk setiap kegiatan, menyampaikan tujuan dan petunjuk pembelajaran secara lebih jelas, serta memberikan pendampingan sesuai kebutuhan peserta didik. Saya juga akan menyediakan waktu yang cukup untuk presentasi, pembahasan kesalahan umum, asesmen, dan refleksi agar pembelajaran tidak hanya meningkatkan antusiasme, tetapi juga membantu peserta didik memahami konsep secara lebih mendalam. Dengan demikian, hasil penilaian ini dapat menjadi dasar perbaikan berkelanjutan bagi kualitas perencanaan dan praktik mengajar saya pada pertemuan berikutnya.</p>
+</div>
+</div>
+<div class="lampiran-cycle-grid">
+<div class="lampiran-cycle-card">
+<div class="lampiran-cycle-header">
+<h4>Lampiran 7</h4>
+<span class="lampiran-cycle-badge">Siklus 1</span>
+</div>
+<div class="lampiran-cycle-body">
+<p>Dokumen penilaian penyusunan perangkat pembelajaran pada Siklus 1.</p>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/18okmrhfrZbs19Va5ILeuIAEJycPAUU99/preview" title="Lampiran 7 - Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/18okmrhfrZbs19Va5ILeuIAEJycPAUU99/view?usp=sharing" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/18okmrhfrZbs19Va5ILeuIAEJycPAUU99/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div>
+<div class="lampiran-cycle-card">
+<div class="lampiran-cycle-header">
+<h4>Lampiran 8</h4>
+<span class="lampiran-cycle-badge">Siklus 1</span>
+</div>
+<div class="lampiran-cycle-body">
+<p>Dokumen penilaian praktik mengajar pada Siklus 1.</p>
+<div class="pdf-block">
+<iframe loading="lazy" src="https://drive.google.com/file/d/1KxJuKX3wu3-FU9-orVxZKuoP5KdSjHIW/preview" title="Lampiran 8 - Siklus 1"></iframe>
+</div>
+<div class="pdf-actions">
+<a class="pdf-button" href="https://drive.google.com/file/d/1KxJuKX3wu3-FU9-orVxZKuoP5KdSjHIW/view?usp=sharing" rel="noopener" target="_blank">Buka di Google Drive</a>
+<a class="pdf-button secondary" href="https://drive.google.com/file/d/1KxJuKX3wu3-FU9-orVxZKuoP5KdSjHIW/preview" rel="noopener" target="_blank">Drive Preview</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="nonmengajar-panel active" id="nonmengajar-rabu-sehat"><div class="artefak-card"><div class="artefak-card-header"><div class="artefak-icon"><svg aria-hidden="true" fill="none" height="22" stroke="white" stroke-width="1.7" viewbox="0 0 24 24" width="22"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></div><div><h3>Rabu Sehat</h3><p>Dokumentasi Kegiatan Non-Mengajar</p></div></div><div class="artefak-card-body"><div class="nonmengajar-photo-grid"><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Rabu Sehat 1 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/11wLuUu5VAhAiSyp8sIc0lt-2S-_8hESa/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Rabu Sehat, foto 1" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=11wLuUu5VAhAiSyp8sIc0lt-2S-_8hESa&amp;sz=w1200"/></a></div><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Rabu Sehat 2 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/1YcyP4Ba95OuS3NaTkHyDk_-MKKe3tSDL/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Rabu Sehat, foto 2" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=1YcyP4Ba95OuS3NaTkHyDk_-MKKe3tSDL&amp;sz=w1200"/></a></div></div><div class="nonmengajar-description"><h4>Penjelasan Kegiatan</h4><p>Mengikuti kegiatan Rabu Sehat melalui pelaksanaan Senam Anak Indonesia Hebat bersama warga sekolah. Kegiatan ini bertujuan untuk membiasakan peserta didik menerapkan pola hidup sehat, menjaga kebugaran tubuh, serta membangun semangat dan kebersamaan di lingkungan sekolah. Melalui kegiatan ini, saya memperoleh pemahaman mengenai pentingnya mendukung pembiasaan hidup sehat sebagai salah satu upaya menjaga kondisi fisik dan meningkatkan kesiapan peserta didik dalam mengikuti pembelajaran.</p></div></div></div></div><div class="nonmengajar-panel" id="nonmengajar-kamis-literasi"><div class="artefak-card"><div class="artefak-card-header"><div class="artefak-icon"><svg aria-hidden="true" fill="none" height="22" stroke="white" stroke-width="1.7" viewbox="0 0 24 24" width="22"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></div><div><h3>Kamis Literasi</h3><p>Dokumentasi Kegiatan Non-Mengajar</p></div></div><div class="artefak-card-body"><div class="nonmengajar-photo-grid"><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Kamis Literasi 1 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/18iVJs3qXbEiayu8y0kKlfqz_14r4YTNS/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Kamis Literasi, foto 1" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=18iVJs3qXbEiayu8y0kKlfqz_14r4YTNS&amp;sz=w1200"/></a></div><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Kamis Literasi 2 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/1J8zxPM-JqGLqXigq8VAanByatbAwZTRS/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Kamis Literasi, foto 2" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=1J8zxPM-JqGLqXigq8VAanByatbAwZTRS&amp;sz=w1200"/></a></div></div><div class="nonmengajar-description"><h4>Penjelasan Kegiatan</h4><p>Mengikuti kegiatan Kamis Berliterasi yang menjadi wadah bagi peserta didik untuk menyalurkan minat, bakat, dan kreativitas melalui berbagai kegiatan, seperti menyanyi, menari, dan membaca buku. Dalam pelaksanaannya, guru turut mengawasi dan mendampingi peserta didik agar kegiatan berjalan dengan tertib. Kegiatan ini memberikan kesempatan kepada peserta didik untuk mengekspresikan diri, mengembangkan potensi, serta meningkatkan rasa percaya diri. Selain itu, saya semakin memahami bahwa pengembangan potensi peserta didik perlu didukung tidak hanya melalui pembelajaran di kelas, tetapi juga melalui kegiatan positif di lingkungan sekolah.</p></div></div></div></div><div class="nonmengajar-panel" id="nonmengajar-jumat-imtaq"><div class="artefak-card"><div class="artefak-card-header"><div class="artefak-icon"><svg aria-hidden="true" fill="none" height="22" stroke="white" stroke-width="1.7" viewbox="0 0 24 24" width="22"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></div><div><h3>Jum'at Imtaq</h3><p>Dokumentasi Kegiatan Non-Mengajar</p></div></div><div class="artefak-card-body"><div class="nonmengajar-photo-grid"><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Jum'at Imtaq 1 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/1k4RHmatFio8ya4fo2Sb5z_CPGsSlRgeR/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Jum'at Imtaq, foto 1" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=1k4RHmatFio8ya4fo2Sb5z_CPGsSlRgeR&amp;sz=w1200"/></a></div><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Jum'at Imtaq 2 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/1vA_8Jkt6h7CwHHiu5d3KUPd5sK4Ah5Jp/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Jum'at Imtaq, foto 2" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=1vA_8Jkt6h7CwHHiu5d3KUPd5sK4Ah5Jp&amp;sz=w1200"/></a></div></div><div class="nonmengajar-description"><h4>Penjelasan Kegiatan</h4><p>Mengikuti kegiatan Jumat Imtak yang dilaksanakan setiap Jumat pagi melalui kegiatan mendengarkan kultum singkat dan murattal yang dibawakan oleh peserta didik maupun guru agama. Kegiatan ini menjadi salah satu bentuk pembiasaan untuk menanamkan nilai-nilai keagamaan, memperkuat karakter religius, serta membangun sikap dan perilaku yang baik dalam kehidupan sehari-hari. Melalui kegiatan ini, saya memperoleh pemahaman bahwa pembentukan karakter peserta didik perlu diimbangi dengan pembinaan spiritual agar mereka dapat tumbuh menjadi pribadi yang berakhlak baik dan memiliki nilai-nilai moral yang kuat.</p></div></div></div></div><div class="nonmengajar-panel" id="nonmengajar-rapat-guru"><div class="artefak-card"><div class="artefak-card-header"><div class="artefak-icon"><svg aria-hidden="true" fill="none" height="22" stroke="white" stroke-width="1.7" viewbox="0 0 24 24" width="22"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></div><div><h3>Rapat Guru</h3><p>Dokumentasi Kegiatan Non-Mengajar</p></div></div><div class="artefak-card-body"><div class="nonmengajar-photo-grid"><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Rapat Guru 1 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/1CItlcqihtPeA_XxdDHDzhrz2ast-qk-p/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Rapat Guru, foto 1" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=1CItlcqihtPeA_XxdDHDzhrz2ast-qk-p&amp;sz=w1200"/></a></div><div class="nonmengajar-photo-slot"><a aria-label="Buka foto Rapat Guru 2 di Google Drive" class="nonmengajar-photo-link" href="https://drive.google.com/file/d/1fCHzg1Kln3-vlAZ252lvd0mBPjj75jf0/view?usp=sharing" rel="noopener noreferrer" target="_blank"><img alt="Dokumentasi kegiatan Rapat Guru, foto 2" decoding="async" loading="lazy" src="https://drive.google.com/thumbnail?id=1fCHzg1Kln3-vlAZ252lvd0mBPjj75jf0&amp;sz=w1200"/></a></div></div><div class="nonmengajar-description"><h4>Penjelasan Kegiatan</h4><p>Mengikuti rapat guru yang membahas berbagai hal terkait pengelolaan dan pengembangan sekolah, mulai dari pengelolaan fasilitas, pembentukan karakter peserta didik, hingga upaya mendukung peningkatan mutu pendidikan. Kegiatan ini memberikan gambaran mengenai peran penting komunikasi dan koordinasi antarpendidik dalam menjalankan program sekolah. Melalui kegiatan tersebut, saya memahami bahwa kerja sama, kolaborasi, dan pengambilan keputusan secara bersama-sama diperlukan untuk menciptakan lingkungan sekolah yang tertib, nyaman, serta mendukung penyelenggaraan pembelajaran yang berkualitas.</p></div></div></div></div></section>
+<section id="model-guru">
+<div class="section-label">Cita-Cita Profesional</div>
+<h2 class="section-title">Model Guru<br/>yang Saya Tuju</h2>
+<p class="section-lead">Pengalaman praktik mengajar membantu saya mengenali sosok guru yang ingin saya kembangkan: pendidik yang merancang pembelajaran bermakna, menghubungkan pengetahuan awal dengan konsep baru, menggunakan media sesuai tujuan, serta peka terhadap kebutuhan dan keterlibatan murid. Saya juga ingin terus belajar dari refleksi dan masukan agar kualitas pembelajaran semakin baik.</p>
+<div class="model-guru-layout">
+<div>
+<div class="misi-box">
+<h3>Misi Pribadi Sebagai Calon Guru</h3>
+<p>Misi saya sebagai guru adalah menghadirkan pembelajaran matematika yang bermakna, jelas tujuannya, dan memberi kesempatan kepada murid untuk memahami konsep, berdiskusi, mencoba strategi, serta merefleksikan proses belajarnya. Saya ingin menjaga antusiasme belajar melalui kegiatan yang sesuai, tanpa mengabaikan pengelolaan waktu, asesmen, dan penutupan pembelajaran.</p></div>
+<div style="margin-top:2rem;">
+<h3 style="font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:1rem; color:var(--ink);">Kompetensi yang Ingin Dibangun</h3>
+<ul class="kompetensi-list">
+<li>
+<span class="k-icon">P</span>
+<div><strong>Pedagogi yang Responsif:</strong> Menyampaikan tujuan pembelajaran secara jelas, mengaitkan materi dengan pengetahuan sebelumnya, serta memberi petunjuk dan pendampingan yang sesuai ketika murid mengalami kesulitan.</div>
+</li>
+<li>
+<span class="k-icon">K</span>
+<div><strong>Konten yang Mendalam:</strong> Menguasai konsep matematika dan membantu murid melihat keterkaitan antarkonsep, memahami alasan di balik prosedur, serta menghubungkan representasi simbolik, visual, dan kontekstual.</div>
+</li>
+<li>
+<span class="k-icon">T</span>
+<div><strong>Teknologi Terintegrasi:</strong> Memilih media konkret maupun digital yang relevan dengan tujuan pembelajaran, membantu murid mengeksplorasi atau memvisualisasikan konsep, dan menyediakan petunjuk penggunaan yang jelas serta pendampingan sesuai kebutuhan.</div>
+</li>
+<li>
+<span class="k-icon">R</span>
+<div><strong>Reflektif &amp; Peneliti:</strong> Menelaah ketercapaian tujuan, alokasi waktu, kejelasan instruksi, penggunaan media, pemerataan partisipasi, serta pelaksanaan refleksi dan penutup; kemudian menggunakan hasil pengamatan dan umpan balik sebagai dasar perbaikan.</div>
+</li>
+<li>
+<span class="k-icon">K</span>
+<div><strong>Kolaboratif &amp; Kolegial:</strong> Terbuka terhadap masukan Guru Pamong, DPL, dan rekan sejawat, serta merancang kerja kelompok dengan pembagian peran dan kesempatan menyampaikan pendapat agar setiap murid dapat berkontribusi.</div>
+</li>
+</ul>
+</div>
+</div>
+<div>
+<div style="background:var(--warm-white); border:1px solid var(--border); border-radius:6px; padding:1.75rem; margin-bottom:1.5rem;">
+<h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:1rem; color:var(--ink);">Karakter Guru yang Ingin Dikembangkan</h3>
+<p style="font-size:0.9rem; color:var(--ink-soft); line-height:1.85; margin-bottom:1rem;">Saya ingin menjadi guru yang peka terhadap kebutuhan dan respons murid, sekaligus cermat dalam merencanakan pembelajaran. Antusiasme murid perlu difasilitasi melalui kegiatan yang terarah, alokasi waktu yang realistis, instruksi yang jelas, dan perhatian terhadap murid yang membutuhkan dorongan atau pendampingan tambahan.</p>
+<p style="font-size:0.9rem; color:var(--ink-soft); line-height:1.85;">Saya ingin hadir sebagai pendidik yang hangat sekaligus terarah: memberi ruang untuk bertanya dan berdiskusi, menyampaikan tujuan pembelajaran sejak awal, serta menjaga keseimbangan antara kegiatan inti, berbagi hasil, refleksi, asesmen formatif, dan penutup.</p>
+</div>
+<div style="background:var(--teal-pale); border:1px solid rgba(45,107,107,0.15); border-radius:6px; padding:1.75rem;">
+<h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:1rem; color:var(--teal);">Sikap Profesional yang Diharapkan</h3>
+<p style="font-size:0.9rem; color:var(--ink-soft); line-height:1.85;">Saya berkomitmen menjalankan tugas dengan integritas, disiplin, dan tanggung jawab, termasuk menggunakan waktu belajar secara efektif. Saya akan menetapkan alokasi waktu yang realistis, menyusun instruksi LKPD secara ringkas dan bertahap, menyiapkan alternatif ketika kegiatan tidak berjalan sesuai rencana, serta memastikan ada waktu untuk berbagi hasil, refleksi, dan asesmen formatif. Saya juga akan menerima umpan balik secara terbuka dan menjadikannya dasar perbaikan praktik mengajar.</p>
+</div>
+</div>
+</div>
+<div style="margin-top:3rem;">
+<h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:1.25rem; color:var(--ink);">Langkah Nyata Menuju Guru Profesional</h3>
+<div class="langkah-grid">
+<div class="langkah-item">
+<span class="langkah-num">1</span>
+<h4>Belajar Berkelanjutan</h4>
+<p>Mempelajari strategi pembelajaran, pengelolaan waktu, dan asesmen melalui literatur serta diskusi dengan Guru Pamong, DPL, dan rekan sejawat.</p>
+</div>
+<div class="langkah-item">
+<span class="langkah-num">2</span>
+<h4>Refleksi Terstruktur</h4>
+<p>Mencatat keberhasilan, kendala, penggunaan media, keterlibatan murid, dan ketercapaian tujuan setelah pembelajaran.</p>
+</div>
+<div class="langkah-item">
+<span class="langkah-num">3</span>
+<h4>Pengembangan Praktik Mengajar</h4>
+<p>Menyusun alokasi waktu yang realistis, menyampaikan tujuan secara eksplisit, serta membuat petunjuk kegiatan dan LKPD yang ringkas dan bertahap.</p>
+</div>
+<div class="langkah-item">
+<span class="langkah-num">4</span>
+<h4>Komunitas Profesional</h4>
+<p>Menyiapkan strategi berbagi hasil yang kolaboratif, dengan pembagian peran, kesempatan memberi tanggapan, batas waktu, dan alternatif jika waktu terbatas.</p>
+</div>
+<div class="langkah-item">
+<span class="langkah-num">5</span>
+<h4>Dokumentasi Pertumbuhan</h4>
+<p>Mendokumentasikan hasil refleksi dan umpan balik untuk melihat perkembangan praktik mengajar dan menetapkan perbaikan berikutnya.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="section-full" id="refleksi" style="background:var(--ink); max-width:100%;">
+<div class="section-inner" style="color:var(--cream);">
+<div class="section-label" style="color:var(--gold);">Evaluasi Diri · Refleksi ke-1</div>
+<h2 class="section-title" style="color:var(--cream); margin-bottom:1rem;">Refleksi Praktik<br/>Pembelajaran Mandiri</h2>
+<p class="section-lead" style="color:rgba(242,251,248,0.72);">Refleksi ini merangkum kekuatan dalam praktik mengajar, aspek yang masih perlu dikembangkan, serta langkah tindak lanjut agar pembelajaran semakin terarah, partisipatif, dan terlaksana secara seimbang.</p>
+<div class="refleksi-grid">
+<div class="refleksi-card">
+<h3>Kekuatan yang Ditemukan</h3>
+<ul><li>Apersepsi membantu menghubungkan pengetahuan yang telah dimiliki murid dengan konsep baru sehingga materi lebih mudah dipahami dan arah pembelajaran lebih jelas.</li><li>Aktivitas pembelajaran yang variatif dan melibatkan murid berpotensi membangun antusiasme, mendorong rasa ingin tahu, dan memberi ruang untuk mencoba serta berdiskusi.</li><li>Media visual dan digital membantu memperjelas konsep, menghubungkan representasi matematika, dan memberi kesempatan kepada murid untuk memeriksa hasil pekerjaannya.</li><li>Penjelasan materi, diskusi kelompok, dan pengerjaan LKPD dapat mendukung proses belajar ketika dirancang dengan arahan serta pendampingan yang sesuai.</li></ul>
+</div>
+<div class="refleksi-card">
+<h3>Hal yang Perlu Ditingkatkan</h3>
+<ul><li>Pengelolaan waktu perlu diperkuat agar setiap tahap pembelajaran memperoleh alokasi yang memadai, terutama ketika murid membutuhkan waktu dan pendampingan tambahan.</li><li>Kegiatan berbagi hasil, refleksi, dan penutup berisiko menjadi terbatas ketika kegiatan inti melampaui alokasi waktu yang direncanakan.</li><li>Tujuan pembelajaran perlu disampaikan secara eksplisit agar murid memahami kompetensi yang diharapkan sejak awal.</li><li>Petunjuk penggunaan media dan instruksi kegiatan perlu lebih terarah. Selain itu, partisipasi perlu dipantau agar murid yang cenderung pasif atau membutuhkan dukungan tambahan tetap terlayani.</li></ul>
+</div>
+<div class="refleksi-card">
+<h3>Rencana Tindak Lanjut</h3>
+<ul><li>Menetapkan alokasi waktu yang realistis untuk setiap tahap pembelajaran dan menyiapkan alternatif kegiatan apabila waktu atau kondisi kelas berubah.</li><li>Meringkas dan memperjelas instruksi kegiatan serta LKPD melalui tahapan yang runtut, agar murid dapat bekerja lebih mandiri dan tetap berfokus pada konsep utama.</li><li>Mengoptimalkan kegiatan berbagi hasil secara kolaboratif melalui pembagian peran, petunjuk pelaksanaan, kesempatan memberi tanggapan, dan batas waktu yang jelas.</li><li>Menyampaikan tujuan pembelajaran secara eksplisit serta menyediakan waktu khusus untuk refleksi, asesmen formatif, dan penguatan materi pada akhir pembelajaran.</li></ul>
+</div>
+</div>
+<div style="background:rgba(39,174,155,0.12); border:1px solid rgba(39,174,155,0.22); border-radius:6px; padding:2rem; margin-top:2.5rem;">
+<h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold-light); margin-bottom:1rem;">Narasi Refleksi Mendalam</h3>
+<p style="font-size:0.9rem; color:rgba(242,251,248,0.82); line-height:1.9; margin-bottom:1rem;">Praktik mengajar membuat saya semakin memahami pentingnya menghubungkan pengetahuan awal murid dengan materi baru melalui apersepsi. Kegiatan ini dapat membantu murid melihat keterkaitan konsep, tetapi perlu dilengkapi dengan penyampaian tujuan pembelajaran secara eksplisit agar arah dan kompetensi yang diharapkan dipahami sejak awal.</p>
+<p style="font-size:0.9rem; color:rgba(242,251,248,0.82); line-height:1.9; margin-bottom:1rem;">Aktivitas yang variatif dan penggunaan media yang sesuai dapat meningkatkan keterlibatan murid serta membantu mereka memahami konsep yang abstrak. Namun, media perlu disertai petunjuk yang jelas dan pendampingan sesuai kebutuhan. Saya juga menyadari bahwa diskusi dan pengerjaan tugas dapat membutuhkan waktu lebih panjang dari perkiraan, sehingga pengaturan waktu harus menjaga keseimbangan antara kegiatan inti, berbagi hasil, refleksi, dan penutup. Keaktifan sebagian murid pun tidak selalu menunjukkan bahwa seluruh anggota telah terlibat atau memahami materi; karena itu, partisipasi setiap murid perlu terus diperhatikan.</p>
+<p style="font-size:0.9rem; color:rgba(242,251,248,0.82); line-height:1.9;">Umpan balik Guru Pamong mengingatkan saya bahwa antusiasme murid perlu diimbangi dengan perencanaan dan pengelolaan waktu yang baik. Ke depannya, saya akan menyampaikan tujuan secara lebih jelas, menyusun instruksi yang ringkas dan bertahap, membagi peran agar partisipasi lebih merata, serta menyiapkan alternatif kegiatan saat waktu terbatas. Saya juga akan memberi perhatian khusus pada refleksi dan asesmen formatif agar proses belajar dapat ditinjau sebelum pembelajaran berakhir. Bagi saya, refleksi bukan sekadar mencatat kekurangan, tetapi menjadi dasar untuk menentukan perbaikan yang realistis dan berkelanjutan.</p>
+</div>
+</div>
+</div>
+<section id="filosofi">
+<div class="section-label">Keyakinan Dasar</div>
+<h2 class="section-title">Filosofi<br/>Mengajar Saya</h2>
+<p class="section-lead">Pengalaman praktik mengajar memperkuat keyakinan saya bahwa pembelajaran yang baik perlu menghubungkan pengetahuan awal murid dengan konsep baru, membuka kesempatan berpartisipasi bagi setiap murid, serta dirancang dengan tujuan, arahan, dan alokasi waktu yang jelas. Guru juga perlu terus belajar dari respons murid, hasil asesmen, dan umpan balik.</p>
+<div class="filosofi-hero">
+<h3>“Saya percaya bahwa menjadi guru bukan hanya tentang menyampaikan pengetahuan, melainkan membantu murid membangun pemahaman, memberi ruang bagi setiap murid untuk terlibat, dan terus menyempurnakan pembelajaran melalui refleksi.”</h3>
+<p>— Filosofi Mengajar, Muhammad Farhan Said</p>
+</div>
+<div class="filosofi-pillars">
+<div class="pillar" data-num="1">
+<h3>Pembelajaran Bermakna Berangkat dari Pengetahuan Sebelumnya</h3>
+<p>Saya meyakini bahwa pemahaman yang bermakna tumbuh ketika murid dapat mengaitkan pengetahuan sebelumnya dengan konsep baru. Karena itu, saya ingin membangun jembatan antarkonsep melalui apersepsi yang relevan dan menyampaikan tujuan pembelajaran secara jelas sejak awal.</p>
+</div>
+<div class="pillar" data-num="2">
+<h3>Setiap Murid Perlu Ruang untuk Berpartisipasi</h3>
+<p>Setiap murid memiliki kebutuhan, kecepatan, dan cara berpartisipasi yang berbeda. Karena itu, pembelajaran perlu menyediakan ruang kontribusi yang merata melalui pembagian peran, pertanyaan yang mengundang pemikiran, diskusi, dan pendampingan bagi murid yang membutuhkan dukungan tambahan.</p>
+</div>
+<div class="pillar" data-num="3">
+<h3>Guru Bertumbuh melalui Refleksi dan Perbaikan</h3>
+<p>Saya memandang refleksi sebagai bagian penting dari tanggung jawab profesional guru. Dengan meninjau ketercapaian tujuan, pengelolaan waktu, kejelasan instruksi, penggunaan media, dan keterlibatan murid, saya dapat menentukan langkah perbaikan yang lebih tepat. Saya juga ingin terbuka terhadap umpan balik dan terus mengembangkan praktik mengajar secara berkelanjutan.</p>
+</div>
+</div>
+</section>
+<footer>
+<div>
+    © 2026 Muhammad Farhan Said
+  </div>
+<div style="text-align:center; color:rgba(249,245,239,0.3);">
+    Universitas Halu Oleo · Pendidikan Profesi Guru
+  </div>
+<div>
+    Dibimbing oleh <a href="#">Dra. Mikarna Haryani, M.Pd.</a> &amp; <a href="#">Dr. Hafiludin Samparadja, S.Pd., M.Pd.</a>
+</div>
+</footer>
+<script>
+  // Filter state for the two main categories and their submenus.
+  let currentCycle = 'mengajar';
+  let currentType = 'rpp';
+  let currentNonMengajar = 'rabu-sehat';
+
+  function selectCycle(cycle, btn) {
+    currentCycle = cycle;
+    document.querySelectorAll('.cycle-tab').forEach(t => t.classList.toggle('active', t === btn));
+    const teachingTabs = document.querySelector('.artefak-tabs');
+    const nonTeachingTabs = document.querySelector('.nonmengajar-tabs');
+    if (teachingTabs) teachingTabs.style.display = cycle === 'mengajar' ? 'flex' : 'none';
+    if (nonTeachingTabs) nonTeachingTabs.style.display = cycle === 'non-mengajar' ? 'flex' : 'none';
+    updateArtefakPanels();
+  }
+
+  function selectType(type, btn) {
+    currentType = type;
+    document.querySelectorAll('.artefak-tabs .artefak-tab').forEach(t => t.classList.toggle('active', t === btn));
+    updateArtefakPanels();
+  }
+
+  function selectNonMengajar(type, btn) {
+    currentNonMengajar = type;
+    document.querySelectorAll('.nonmengajar-tabs .artefak-tab').forEach(t => t.classList.toggle('active', t === btn));
+    updateArtefakPanels();
+  }
+
+  function updateArtefakPanels() {
+    document.querySelectorAll('.artefak-panel').forEach(panel => {
+      panel.classList.toggle('active', currentCycle === 'mengajar' && panel.id.endsWith('-' + currentType));
+    });
+    document.querySelectorAll('.nonmengajar-panel').forEach(panel => {
+      panel.classList.toggle('active', currentCycle === 'non-mengajar' && panel.id === 'nonmengajar-' + currentNonMengajar);
+    });
+  }
+
+  updateArtefakPanels();
+
+  // PPL gallery viewer
+  const ppltThumbs = document.querySelectorAll('.pplt-thumb');
+  const ppltMainImg = document.getElementById('ppltMainImg');
+  const ppltMainLink = document.getElementById('ppltMainLink');
+  const ppltMainTitle = document.getElementById('ppltMainTitle');
+  const ppltMainCaption = document.getElementById('ppltMainCaption');
+
+  function setPpltGallery(button) {
+    if (!button) return;
+    const full = button.dataset.full;
+    const thumb = button.dataset.thumb;
+    const title = button.dataset.title || 'Foto';
+    const alt = button.dataset.alt || title;
+
+    if (ppltMainImg && thumb) {
+      ppltMainImg.src = thumb;
+      ppltMainImg.alt = alt;
+    }
+    if (ppltMainLink && full) {
+      ppltMainLink.href = full;
+    }
+    if (ppltMainTitle) ppltMainTitle.textContent = title;
+    if (ppltMainCaption) ppltMainCaption.textContent = alt;
+
+    ppltThumbs.forEach(t => t.classList.toggle('active', t === button));
+  }
+
+  ppltThumbs.forEach(btn => {
+    btn.addEventListener('click', () => setPpltGallery(btn));
+  });
+
+  if (ppltThumbs.length) {
+    setPpltGallery(ppltThumbs[0]);
+  }
+
+  // Navigation scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('nav a[data-section]');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.section === entry.target.id);
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(s => observer.observe(s));
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Scroll reveal for elements
+  const revealEls = document.querySelectorAll('.fade-in');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    revealObserver.observe(el);
+  });
+</script>
+</body>
+</html>
